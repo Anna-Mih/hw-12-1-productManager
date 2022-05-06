@@ -19,9 +19,27 @@ public class Repository {
     }
 
     public void removeById(int id) {
-        int length = items.length - 1;
+
+        int findId = 0;  // проверяю, что введен существующий id
+        for (Product item : items) {
+            if (item.getId() == id) {
+                findId++;
+            }
+        }
+
+//        if (findId == 0) {
+//            return;
+//        }
+//
+//        if (findId > 1) {
+//            return;
+//        }
+
+        int length = items.length - findId;
         Product[] tmp = new Product[length];
         int index = 0;
+
+
         for (Product item : items) {
             if (item.getId() != id) {
                 tmp[index] = item;

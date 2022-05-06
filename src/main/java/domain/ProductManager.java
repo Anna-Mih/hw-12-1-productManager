@@ -44,28 +44,38 @@ public class ProductManager {
         return result;
     }
 
-    public boolean matches(Product item, String search) {
-        if (item instanceof Book) {
-            Book book = (Book) item;
-            if (book.getAuthor().contains(search)) {
-                return true;
-            }
-            if (book.getName().contains(search)) {
-                return true;
-            }
+    public boolean matches(Product product, String search) {
+        if (product.getName().contains(search)) {
+            return true;
+        } else {
             return false;
         }
-        if (item instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) item;
-            if (smartphone.getManufacturer().contains(search)) {
-                return true;
-            }
-            if (smartphone.getName().contains(search)) {
-                return true;
-            }
-            return false;
-        }
-        return false;
+        // или в одну строку:
+        // return product.getName().contains(search);
     }
-
 }
+
+//    public boolean matches(Product item, String search) {
+//        if (item instanceof Book) {
+//            Book book = (Book) item;
+//            if (book.getAuthor().contains(search)) {
+//                return true;
+//            }
+//            if (book.getName().contains(search)) {
+//                return true;
+//            }
+//            return false;
+//        }
+//        if (item instanceof Smartphone) {
+//            Smartphone smartphone = (Smartphone) item;
+//            if (smartphone.getManufacturer().contains(search)) {
+//                return true;
+//            }
+//            if (smartphone.getName().contains(search)) {
+//                return true;
+//            }
+//            return false;
+//        }
+//        return false;
+//    }
+
