@@ -12,17 +12,13 @@ class ProductManagerTest {
         repo.save(new Book(1, "stihi", 200, "barto"));
         repo.save(new Smartphone(2, "sumsung", 12000, "company"));
         repo.save(new Book(3, "animals", 150, "bianki"));
-        //ProductManager manager = new ProductManager();
-
         String text = "pushkin";
-
         ProductManager manager = new ProductManager(repo);
 
         Product[] expected = {};
         Product[] actual = manager.searchBy(text);
 
         assertArrayEquals(expected, actual);
-
     }
 
     @org.junit.jupiter.api.Test
@@ -30,11 +26,36 @@ class ProductManagerTest {
         repo.save(new Book(1, "stihi", 200, "barto"));
         repo.save(new Smartphone(2, "sumsung", 12000, "company"));
         repo.save(new Book(3, "animals", 150, "bianki"));
-        //ProductManager manager = new ProductManager();
         String text = "barto";
         ProductManager manager = new ProductManager(repo);
 
         Product[] expected = {new Book(1, "stihi", 200, "barto")};
+        Product[] actual = manager.searchBy(text);
+        assertArrayEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    void shouldSearchByIfExistTextInSecondItem() {
+        repo.save(new Book(1, "stihi", 200, "barto"));
+        repo.save(new Smartphone(2, "sumsung", 12000, "company"));
+        repo.save(new Book(3, "animals", 150, "bianki"));
+        String text = "company";
+        ProductManager manager = new ProductManager(repo);
+
+        Product[] expected = {new Smartphone(2, "sumsung", 12000, "company")};
+        Product[] actual = manager.searchBy(text);
+        assertArrayEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    void shouldSearchByIfExistTextInLastItem() {
+        repo.save(new Book(1, "stihi", 200, "barto"));
+        repo.save(new Smartphone(2, "sumsung", 12000, "company"));
+        repo.save(new Book(3, "animals", 150, "bianki"));
+        String text = "animals";
+        ProductManager manager = new ProductManager(repo);
+
+        Product[] expected = {new Book(3, "animals", 150, "bianki")};
         Product[] actual = manager.searchBy(text);
         assertArrayEquals(expected, actual);
     }
@@ -73,6 +94,7 @@ class ProductManagerTest {
         Product[] actual = manager.searchBy(text);
         assertArrayEquals(expected, actual);
     }
+
     @org.junit.jupiter.api.Test
     void shouldSearchByIfExistTextPartially() {
         repo.save(new Book(1, "stihi", 200, "petrov"));
