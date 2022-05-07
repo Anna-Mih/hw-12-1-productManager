@@ -78,24 +78,6 @@ class ProductManagerTest {
         assertArrayEquals(expected, actual);
     }
 
-//    @org.junit.jupiter.api.Test
-//    void shouldSearchByIfExistTextInMoreThenOneItemInDifferentParts() {
-//        repo.save(new Book(1, "stihi", 200, "petrov"));
-//        repo.save(new Smartphone(2, "sumsung", 12000, "company"));
-//        repo.save(new Book(3, "animals", 150, "bianki"));
-//        repo.save(new Smartphone(4, "sumsung-galaxy", 15000, "company"));
-//        repo.save(new Book(5, "petrov and sokolov", 200, "ivanov"));
-//        String text = "petrov";
-//        ProductManager manager = new ProductManager(repo);
-//
-//        Product[] expected = {
-//                new Book(1, "stihi", 200, "petrov"),
-//                new Book(5, "petrov and sokolov", 200, "ivanov")
-//        };
-//        Product[] actual = manager.searchBy(text);
-//        assertArrayEquals(expected, actual);
-//    }
-
     @org.junit.jupiter.api.Test
     void shouldSearchByIfExistTextPartially() {
         repo.save(new Book(1, "stihi", 200, "petrov"));

@@ -14,24 +14,6 @@ public class ProductManager {
     }
 
     public Product[] searchBy(String text) {
-//        int index = 0;
-//        int length = 0;
-//
-//        for (Product item: repo.findAll()) {
-//            if (matches(item, text)) {
-//                length++;
-//            }
-//        }
-//        Product[] result = new Product[length];
-//
-//        for (Product item: repo.findAll()) {
-//            if (matches(item, text)) {
-//                result[index] = item;
-//                index++;
-//            }
-//        }
-//        return result;
-
         Product[] result = new Product[0];
         for (Product item : repo.findAll()) {
             if (matches(item, text)) {
@@ -50,32 +32,5 @@ public class ProductManager {
         } else {
             return false;
         }
-        // или в одну строку:
-        // return product.getName().contains(search);
     }
 }
-
-//    public boolean matches(Product item, String search) {
-//        if (item instanceof Book) {
-//            Book book = (Book) item;
-//            if (book.getAuthor().contains(search)) {
-//                return true;
-//            }
-//            if (book.getName().contains(search)) {
-//                return true;
-//            }
-//            return false;
-//        }
-//        if (item instanceof Smartphone) {
-//            Smartphone smartphone = (Smartphone) item;
-//            if (smartphone.getManufacturer().contains(search)) {
-//                return true;
-//            }
-//            if (smartphone.getName().contains(search)) {
-//                return true;
-//            }
-//            return false;
-//        }
-//        return false;
-//    }
-
